@@ -12,7 +12,7 @@ import ddc.bm.api.AuthorizationFilter;
 import ddc.bm.api.Login;
 import ddc.bm.api.Test;
  
-public class Application extends javax.ws.rs.core.Application {
+public class Application extends jakarta.ws.rs.core.Application {
 	
     private Set<Object> singletons = new HashSet<Object>();
 //    private Set<Object> classes = new HashSet<Object>();

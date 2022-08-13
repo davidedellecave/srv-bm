@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ddc.bm</groupId>
 	<artifactId>bm</artifactId>
@@ -8,17 +9,50 @@
 	<name>Booking Manager</name>
 
 	<properties>
-		<resteasy-ver>3.0.19.Final</resteasy-ver>
+		<resteasy-ver>3.15.3.Final</resteasy-ver>
 		<jackson-core-ver>2.8.3</jackson-core-ver>
 		<jackson-jaxrs-ver>2.8.3</jackson-jaxrs-ver>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jackson-core-ver>2.11.4</jackson-core-ver>
+		<jackson-jaxrs-version>2.11.4</jackson-jaxrs-version>
+		<log4j2.version>2.18.0</log4j2.version>
+		<jupiter.version>5.8.1</jupiter.version>
+		<http-client>4.5.12</http-client>
+		<commons-lang>3.8</commons-lang>
+		<commons-collection>4.4</commons-collection>
+		<commons-codec>1.14</commons-codec>
+		<commons-io>2.5</commons-io>
+		<commons-compress>1.9</commons-compress>
+		<commons-text>1.5</commons-text>
+		<commons-csv>1.8</commons-csv>
+		<commons-email>1.4</commons-email>
+		<maven-ver>3.8.1</maven-ver>
+		<java-ver>18</java-ver>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>ddc-support</groupId>
-			<artifactId>support</artifactId>
+			<artifactId>jsupport</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 
 		<!-- joda-time -->
 		<dependency>
@@ -41,23 +75,38 @@
 		</dependency>
 
 		<!-- Resteasy -->
+		<!-- 
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
 			<version>${resteasy-ver}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jackson-provider -->
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson-provider</artifactId>
 			<version>${resteasy-ver}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.jboss.resteasy/resteasy-jaxb-provider -->
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxb-provider</artifactId>
 			<version>${resteasy-ver}</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-core</artifactId>
+			<version>6.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>6.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxb-provider</artifactId>
+			<version>6.1.0.Final</version>
 		</dependency>
 
 		<!-- ======================== -->
@@ -116,15 +165,14 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java-ver}</source>
+					<target>${java-ver}</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>3.2.2</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>

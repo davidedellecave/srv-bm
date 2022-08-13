@@ -10,7 +10,7 @@ public class TestTask extends AppTask<String, String> {
 	@Override
 	public String run(String input) throws Exception {
 //		throw new Exception("dddd");
-		Chronometer.sleep(Timespan.createTimespan(2,TimeUnit.SECONDS));
+		Chronometer.sleep(Timespan.createTimespan(2,TimeUnit.SECONDS).getMillis());
 		return input;
 	}
 

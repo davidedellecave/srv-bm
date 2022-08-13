@@ -3,25 +3,25 @@ package ddc.bm.api;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import javax.annotation.security.DenyAll;
-import javax.annotation.security.PermitAll;
-import javax.annotation.security.RolesAllowed;
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.Provider;
-
 import org.jboss.resteasy.core.Headers;
 import org.jboss.resteasy.core.ResourceMethodInvoker;
 import org.jboss.resteasy.core.ServerResponse;
-import org.jboss.resteasy.util.Base64;
+
+import jakarta.annotation.security.DenyAll;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.ext.Provider;
 
 @Provider
-public class _SecurityInterceptor implements javax.ws.rs.container.ContainerRequestFilter {
+public class _SecurityInterceptor implements jakarta.ws.rs.container.ContainerRequestFilter {
 	private static final String AUTHORIZATION_PROPERTY = "Authorization";
 	private static final String AUTHENTICATION_SCHEME = "Basic";
 	private static final ServerResponse ACCESS_DENIED = new ServerResponse("Access denied for this resource", 401, new Headers<Object>());;
@@ -58,8 +58,8 @@ public class _SecurityInterceptor implements javax.ws.rs.container.ContainerRequ
 			// Decode username and password
 			String usernameAndPassword = null;
 			try {
-				usernameAndPassword = new String(Base64.decode(encodedUserPassword));
-			} catch (IOException e) {
+				usernameAndPassword = new String(Base64.getDecoder().decode(encodedUserPassword));
+			} catch (IllegalArgumentException e) {
 				requestContext.abortWith(SERVER_ERROR);
 				return;
 			}

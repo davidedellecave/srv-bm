@@ -1,13 +1,13 @@
 package ddc.bm.api;
 
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.lang3.StringUtils;
 
 import ddc.bm.app.AppTask;
 import ddc.support.task.TaskExitCode;
 import ddc.support.util.ExceptionUtil;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 public class ApiHelper<T> {
 	
